@@ -18,21 +18,21 @@ class TestNovelCrawler(unittest.TestCase):
         self.assertEqual(cleaned_text, "Hello, world ")
 
     def test_generate_pdf(self):
-        generator = DocumentGenerator(title="Test Title", author="Test Author")
+        generator = DocumentGenerator(title="Test Title", authors=["Test Author"])
         generator.add_chapter("Test Chapter", "This is a test content.")
         generator.generate_pdf("/tmp/test_document", clean_tex=True)
         self.assertTrue(os.path.exists("/tmp/test_document.pdf"))
 
     def test_crawl_novel(self):
         service = NovelCrawlerService(
-            novel_url='https://freewebnovel.com/global-fog-survival.html',
+            novel_url='https://freewebnovel.com/global-era-of-star-trekking.html',
             start_chapter=1,
-            end_chapter=2,
+            end_chapter=1,
             output_dir='/tmp',
             num_workers=6
         )
         service.crawl_novel()
-        self.assertTrue(os.path.exists("/tmp/Global Fog Survival.pdf"))
+        self.assertTrue(os.path.exists("/tmp/Global Era of Star trekking.pdf"))
 
 if __name__ == '__main__':
     unittest.main()

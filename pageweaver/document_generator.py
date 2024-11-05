@@ -124,7 +124,7 @@ class DocumentGenerator:
             for paragraph in paragraphs:
                 self.doc.append(NoEscape(self._format_text(paragraph, lang)))
                 self.doc.append(NoEscape(r'\par'))  # Add paragraph break
-        print(f"Chapter {chapter_heading} saved.")
+        print(f"{chapter_heading} saved.")
 
     def generate_pdf(self, filename, clean_tex=True):
         """

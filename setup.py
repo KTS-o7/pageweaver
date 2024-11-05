@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 setup(
     name='pageweaver',
-    version='1.1.0',
+    version='1.1.1',
     author='Krishnatejaswi S, Sridhar D Kedlaya',
     author_email='shentharkrishnatejaswi@gmail.com, sridhardked@gmail.com',
     description='A web crawler to fetch web novel chapters and generate a PDF.',

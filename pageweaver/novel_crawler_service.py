@@ -50,8 +50,8 @@ class NovelCrawlerService:
         html = self.crawler.fetch_page(self.novel_url)
         if html:
             title, authors = self.crawler.extract_novel_info(html)
-            base_url = self.novel_url.replace('https://freewebnovel.com', 'https://read.freewebnovel.me')
-            base_url = base_url.replace('.html', '')
+            base_url = self.novel_url.replace('.html', '')
+            #base_url = base_url.replace('.html', '')
             return title, authors, base_url
         return None, None, None
 
@@ -82,7 +82,7 @@ class NovelCrawlerService:
         MIN_SENTENCES_PER_PARAGRAPH = 20
         MAX_SENTENCES_PER_PARAGRAPH = 25
 
-        current_url = f"{self.base_url}/chapter-{current_chapter}"
+        current_url = f"{self.base_url}/chapter-{current_chapter}.html"
         html = self.crawler.fetch_page(current_url)
         if html:
             text = self.crawler.extract_text_from_article(html)
@@ -103,7 +103,7 @@ class NovelCrawlerService:
                         paragraphs.append('. '.join(current_paragraph).strip() + '.')
                         current_paragraph = []
                 if current_paragraph:
-                    paragraphs.append('. '.join(current_paragraph).strip() + '.')
+                    paragraphs.append('. \n '.join(current_paragraph).strip() + '.')
 
                 lang = self.detect_language(text)
                 return current_chapter, chapter_heading, paragraphs, lang
