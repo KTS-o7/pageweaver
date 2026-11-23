@@ -30,7 +30,7 @@ jobs:
           # Specify the theme here
           jekyll_theme: minima
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
 
   deploy:
     environment:
